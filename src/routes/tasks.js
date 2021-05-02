@@ -1,1 +1,3 @@
-//comentario
+module.exports = (sequelize, DataType) => {
+
+};
