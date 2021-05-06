@@ -1,5 +1,5 @@
 module.exports = {
-    database: 'tasks',
+    databes: 'tasks',
     username: '',
     password: '',
     params: {
