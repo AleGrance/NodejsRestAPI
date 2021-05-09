@@ -19,14 +19,12 @@ module.exports = app => {
                         msg: error.message
                     });
                 });
-        });
+        })
 
     app.route('/tasks/:id')
         .get((req, res) => {
-            const parametro = req.params;
-
             Tasks.findOne({
-                    where: parametro
+                    where: req.params
                 })
                 .then(result => res.json(result))
                 .catch(error => {
@@ -35,7 +33,6 @@ module.exports = app => {
                     });
                 })
         })
-
         .put((req, res) => {
             Tasks.update(req.body, {
                     where: req.params
@@ -47,7 +44,6 @@ module.exports = app => {
                     });
                 })
         })
-
         .delete((req, res) => {
             Tasks.destroy({
                     where: req.params
