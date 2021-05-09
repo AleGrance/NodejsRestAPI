@@ -15,11 +15,7 @@ module.exports = app => {
         .post((req, res) => {
             Users.create(req.body)
                 .then(result => res.json(result))
-                .catch(error => {
-                    res.status(402).json({
-                        msg: error.menssage
-                    });
-                });
+                .catch(error => res.json(error.errors));
         })
 
     app.route('/users/:id')
