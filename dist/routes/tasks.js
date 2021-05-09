@@ -20,9 +20,8 @@ module.exports = function (app) {
     });
   });
   app.route('/tasks/:id').get(function (req, res) {
-    var parametro = req.params;
     Tasks.findOne({
-      where: parametro
+      where: req.params
     }).then(function (result) {
       return res.json(result);
     })["catch"](function (error) {
