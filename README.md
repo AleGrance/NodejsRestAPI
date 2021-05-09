@@ -24,7 +24,7 @@ Then you can test the API using the browser or Postman opening http://localhost:
 For run in production you need to run npm babel-node to translate the code and then run npm start for start the server
 
 ```
-npm babel-node
+npm run build
 npm start
 ```
 
