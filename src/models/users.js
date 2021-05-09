@@ -23,7 +23,10 @@ module.exports = (sequelize, DataType) => {
         email: {
             type: DataType.STRING,
             allowNull: false,
-            unique: true,
+            unique: {
+                msg: 'El correo ingresado ya existe',
+                fields: ['email']
+            },
             validate: {
                 notEmpty: true
             }
