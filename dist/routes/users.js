@@ -14,9 +14,7 @@ module.exports = function (app) {
     Users.create(req.body).then(function (result) {
       return res.json(result);
     })["catch"](function (error) {
-      res.status(402).json({
-        msg: error.menssage
-      });
+      return res.json(error.errors);
     });
   });
   app.route('/users/:id').get(function (req, res) {
