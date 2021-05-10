@@ -14,11 +14,7 @@ module.exports = app => {
         .post((req, res) => {
             Tasks.create(req.body)
                 .then(result => res.json(result))
-                .catch(error => {
-                    res.status(412).json({
-                        msg: error.message
-                    });
-                });
+                .catch(error => res.json(error.errors));
         })
 
     app.route('/tasks/:id')
@@ -28,7 +24,7 @@ module.exports = app => {
                 })
                 .then(result => res.json(result))
                 .catch(error => {
-                    res.status(412).json({
+                    res.status(404).json({
                         msg: error.message
                     });
                 })
@@ -56,4 +52,14 @@ module.exports = app => {
                 })
         })
 
+    app.route('/tasks/findByDone')
+        .post((req, res) => {
+            Tasks.findAll({
+                    where: {
+                        done: req.body.done
+                    }
+                })
+                .then(result => res.json(result))
+                .catch(error => res.json(error))
+        })
 };

@@ -14,9 +14,7 @@ module.exports = function (app) {
     Tasks.create(req.body).then(function (result) {
       return res.json(result);
     })["catch"](function (error) {
-      res.status(412).json({
-        msg: error.message
-      });
+      return res.json(error.errors);
     });
   });
   app.route('/tasks/:id').get(function (req, res) {
@@ -25,7 +23,7 @@ module.exports = function (app) {
     }).then(function (result) {
       return res.json(result);
     })["catch"](function (error) {
-      res.status(412).json({
+      res.status(404).json({
         msg: error.message
       });
     });
@@ -48,6 +46,17 @@ module.exports = function (app) {
       res.status(412).json({
         msg: error.message
       });
+    });
+  });
+  app.route('/tasks/findByDone').post(function (req, res) {
+    Tasks.findAll({
+      where: {
+        done: req.body.done
+      }
+    }).then(function (result) {
+      return res.json(result);
+    })["catch"](function (error) {
+      return res.json(error);
     });
   });
 };

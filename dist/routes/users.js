@@ -23,7 +23,7 @@ module.exports = function (app) {
     }).then(function (result) {
       return res.json(result);
     })["catch"](function (error) {
-      res.status(402).json({
+      res.status(404).json({
         msg: error.message
       });
     });

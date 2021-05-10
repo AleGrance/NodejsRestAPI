@@ -24,7 +24,7 @@ module.exports = app => {
                 })
                 .then(result => res.json(result))
                 .catch(error => {
-                    res.status(402).json({
+                    res.status(404).json({
                         msg: error.message
                     });
                 });
@@ -51,6 +51,4 @@ module.exports = app => {
                 });
             })
         })
-
-
 };
