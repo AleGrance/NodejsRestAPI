@@ -1,7 +1,7 @@
 "use strict";
 
 module.exports = {
-  databes: 'tasks',
+  database: 'tasks',
   username: '',
   password: '',
   params: {
